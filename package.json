@@ -1,0 +1,16 @@
+{
+   "name": "middle_diplom",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "build": "webpack --mode=producation",
+      "watch": "webpack --watch --mode=development"
+   },
+   "author": "Volkov Viktor",
+   "license": "ISC",
+   "dependencies": {
+      "webpack": "^5.89.0",
+      "webpack-cli": "^5.1.4"
+   }
+}

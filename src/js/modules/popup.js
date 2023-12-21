@@ -8,9 +8,7 @@ const popup = (btn, modalBody, close) => {
    overlay.style.opacity = '0';
 
    const openPopup = () => {
-      console.log(modal.classList[0])
       overlay.classList.add(`overlay-${modal.classList[0]}`)
-      console.log(overlay)
       modal.style.display = 'block';
       overlay.style.display = 'block';
 

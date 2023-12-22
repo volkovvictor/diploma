@@ -3,6 +3,7 @@ import slider from './modules/slider';
 import scroll from './modules/scroll';
 import zoom from './modules/zoom';
 import timer from './modules/timer';
+import calc from './modules/calc';
 
 popup('#header .btn', '.header-modal', 'header-modal__close');
 popup('.service-button .btn', '.services-modal', 'services-modal__close');
@@ -11,3 +12,4 @@ slider('.service-block', '.services-arrows', '.services__arrow--left', '.service
 scroll();
 zoom();
 timer('01.01.2024');
+calc(1000);

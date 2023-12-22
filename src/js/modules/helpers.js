@@ -15,6 +15,13 @@ const animate = ({timing, draw, duration}) => {
    }
 
    });
-   }
+}
 
-export {animate}
+const validation = (elem, type) => {
+
+   if (type === 'num') {
+      return elem.value.replace(/[^0-9]/gi, '');
+   }
+}
+
+export {animate, validation}

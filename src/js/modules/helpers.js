@@ -8,7 +8,7 @@ const animate = ({timing, draw, duration}) => {
 
    let progress = timing(timeFraction);
 
-   draw(progress); // отрисовать её
+   draw(progress);
 
    if (timeFraction < 1) {
       requestAnimationFrame(animate);
@@ -17,11 +17,19 @@ const animate = ({timing, draw, duration}) => {
    });
 }
 
-const validation = (elem, type) => {
+const validation = (elem, type, required = false) => {
+   let res = false;
 
-   if (type === 'num') {
-      return elem.value.replace(/[^0-9]/gi, '');
-   }
+   if (type === 'num') return elem.value.replace(/[^0-9]/gi, '');
+
+   if (type === 'tel') res = /^\+?(\d{11,16}$)/gi.test(elem.value);
+   if (type === 'name') res = !/[^а-яa-z\s]/gi.test(elem.value);
+
+   if (required && elem.value.trim() === '') res = false;
+
+   res ? elem.classList.remove('error') : elem.classList.add('error');
+
+   return res;
 }
 
-export {animate, validation}
+export {animate, validation};

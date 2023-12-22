@@ -4,6 +4,7 @@ import scroll from './modules/scroll';
 import zoom from './modules/zoom';
 import timer from './modules/timer';
 import calc from './modules/calc';
+import submitForm from './modules/submitForm';
 
 popup('#header .btn', '.header-modal', 'header-modal__close');
 popup('.service-button .btn', '.services-modal', 'services-modal__close');
@@ -13,3 +14,15 @@ scroll();
 zoom();
 timer('01.01.2024');
 calc(1000);
+submitForm('form[name=action-form]', [
+   {
+      id: 'calc-total',
+      type: 'input',
+   }
+]);
+submitForm('form[name=action-form2]', [
+   {
+      id: 'calc-total',
+      type: 'input',
+   }
+]);

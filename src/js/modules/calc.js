@@ -12,13 +12,15 @@ const calc = (price) => {
       return price * calcType.value * calcTypeMaterial.value * calcInput.value;
    }
 
-   calcSection.addEventListener('input', (e) => {
-      const target = e.target;
-
-      if(target.tagName !== 'SELECT' && target.tagName !== 'INPUT') return;
-
-      !isNaN(calcType.value) && !isNaN(calcTypeMaterial.value) ? calcTotal.value = calcValues() : calcTotal.value = '';
-   });
+   try {
+      calcSection.addEventListener('input', (e) => {
+         const target = e.target;
+   
+         if(target.tagName !== 'SELECT' && target.tagName !== 'INPUT') return;
+   
+         !isNaN(calcType.value) && !isNaN(calcTypeMaterial.value) ? calcTotal.value = calcValues() : calcTotal.value = '';
+      });
+   } catch(err) {err.message}
 }
 
 export default calc;

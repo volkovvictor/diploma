@@ -28,8 +28,6 @@ const validation = (elem, type, required = false) => {
    if (required && elem.value.trim() === '') res = false;
 
    res ? elem.classList.remove('error') : elem.classList.add('error');
-
-   return res;
 }
 
 export {animate, validation};

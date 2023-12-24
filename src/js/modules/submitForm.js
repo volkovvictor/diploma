@@ -33,8 +33,10 @@ const submitForm = (form, someElem = []) => {
       for (let i = 0; i < elements.length; i++) {
          const elem = elements[i];
 
-         success = elem.name === 'fio' ? validation(elem, 'name', true) : 
-                  elem.name === 'phone' ? validation(elem, 'tel', true) : success;
+         if (elem.name === 'fio') validation(elem, 'name', true);
+         if (elem.name === 'phone') validation(elem, 'tel', true);
+
+         if(elem.classList.contains('error')) success = false;
       }
 
       if (success) {

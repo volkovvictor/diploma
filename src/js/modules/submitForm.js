@@ -1,8 +1,6 @@
 import {validation} from './helpers';
 
-const submitForm = (form, someElem = []) => {
-   const actionForm = document.querySelector(form);
-
+const submitForm = (someElem = []) => {
    const submitData = (url, data, method) => {
       return fetch(url, {
          method: method,
@@ -10,9 +8,9 @@ const submitForm = (form, someElem = []) => {
       }).then(res => res.json())
    }
 
-   const getData = () => {
-      const formData = new FormData(actionForm);
-      const elements = actionForm.elements;
+   const getData = (form) => {
+      const formData = new FormData(form);
+      const elements = form.elements;
       const formBody = [];
 
       let success = true;
@@ -40,14 +38,15 @@ const submitForm = (form, someElem = []) => {
       }
 
       if (success) {
-         submitData('https://jsonplaceholder.typicode.com/posts', formBody, 'POST').then(data => actionForm.reset());
+         submitData('https://jsonplaceholder.typicode.com/posts', formBody, 'POST').then(data => form.reset());
       }
    }
 
-   actionForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      getData();
+   document.body.addEventListener('submit', (e) => {
+      if (e.target.closest('form')) {
+         e.preventDefault();
+         getData(e.target.closest('form'));
+      }
    });
 }
 

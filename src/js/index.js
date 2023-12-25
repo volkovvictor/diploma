@@ -14,13 +14,7 @@ scroll();
 zoom();
 timer('01.01.2024');
 calc(1000);
-submitForm('form[name=action-form]', [
-   {
-      id: 'calc-total',
-      type: 'input',
-   }
-]);
-submitForm('form[name=action-form2]', [
+submitForm([
    {
       id: 'calc-total',
       type: 'input',

@@ -1,13 +1,5 @@
 const timer = (deadline) => {
-   const days = document.querySelector('.count_1 > span');
-   const hours = document.querySelector('.count_2 > span');
-   const minutes = document.querySelector('.count_3 > span');
-   const seconds = document.querySelector('.count_4 > span');
-
-   days.textContent = '00';
-   hours.textContent = '00';
-   minutes.textContent = '00';
-   seconds.textContent = '00';
+   const countdown = document.querySelectorAll('.countdown');
 
    const addZero = num => num >= 10 ? num : `0${num}`;
 
@@ -24,20 +16,36 @@ const timer = (deadline) => {
       return {dateRemaining, days, hours, minutes, seconds}
    }
 
-   const renderTimer = () => {
+   const renderTimer = (days, hours, minutes, seconds) => {
       const dates = getDate();
       
-      if(dates.dateRemaining < 0) return;
+      if(dates.dateRemaining < 0) {
+         days.textContent = '00';
+         hours.textContent = '00';
+         minutes.textContent = '00';
+         seconds.textContent = '00';
+
+         return;
+      };
 
       days.textContent = dates.days;
       hours.textContent = dates.hours;
       minutes.textContent = dates.minutes;
       seconds.textContent = dates.seconds;
       
-      setInterval(renderTimer, 1000);
+      setInterval(() => {
+         renderTimer(days, hours, minutes, seconds)
+      }, 1000);
    }
 
-   renderTimer();
+   countdown.forEach(timer => {
+      const days = timer.querySelector('.count_1 > span');
+      const hours = timer.querySelector('.count_2 > span');
+      const minutes = timer.querySelector('.count_3 > span');
+      const seconds = timer.querySelector('.count_4 > span');
+
+      renderTimer(days, hours, minutes, seconds);
+   });
 }
 
 export default timer;
